@@ -6,6 +6,7 @@ import io
 from ROOT import TVector3
 
 AV_radius = 6000 #mm
+AV_inner_radius = 5999 #mm
 counter_radius = 10 #mm
 counter_height = math.sqrt((AV_radius ** 2) - (counter_radius ** 2)) #mm
 
@@ -78,7 +79,9 @@ with open("TRIM.DAT", 'w') as trimdat:
             pos = rmcparticle.GetPos() #position in mm
             mom = rmcparticle.GetMom() #momentum in MeV/c
             ke = rmcparticle.GetKE() #KE in MeV
-            print "Particle " + str(i) + " has value " + str(ke) + " for KE."
+            # Scale pos to AV_inner_radius:
+            # hack to generate events only on the surface of the acrylic.
+            pos = scale(AV_inner_radius / pos.Mag(), pos)
             # Time it would take the particle to reach the counter's height
             # (Units are MeV/(c * mm), dimensions of MT; irrelevant here)
             t = (counter_height - pos.Z()) / mom.Z() 
