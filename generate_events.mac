@@ -1,0 +1,14 @@
+/rat/db/set DETECTOR geo_file "geo/alphacounter.geo"
+/run/initialize
+/rat/proc count
+/rat/procset update 10
+/rat/proc outroot
+/rat/procset file "alpha.root"
+
+/generator/add combo gun:fill:poisson
+/generator/vtx/set e+ 0 0 0 1.0
+/generator/pos/set counter_region
+/generator/rate/set 1
+
+/run/beamOn 100
+exit

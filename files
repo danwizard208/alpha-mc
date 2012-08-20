@@ -1,0 +1,3 @@
+RATDIR/data/geo/alphacounter.geo  # Geometry file, specifications of event generating region
+generate_events.mac               # Rat macro to generate the events
+Helium_In_*                       # SRIM generated text files for Stopping and Energy loss of Alpha particles
