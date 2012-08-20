@@ -37,7 +37,7 @@ def data_line(name, pos, mom, ke):
 
     line = ""
     # Name (string of five non-whitespace chars)
-    line += " " + str(name) + " "
+    line += "{0:05d} ".format(name)
     # Atomic Number (always 4 for an alhpa particle)
     line += " 4 "
     # Kinetic Energy in ev
@@ -91,7 +91,7 @@ with open("TRIM.DAT", 'w') as trimdat:
             if (final_pos.X() ** 2 + final_pos.Y() ** 2) > counter_radius ** 2:
                 continue #When it reaches the counter height, it's outside the radius
             # Trajectory lines up, now for SRIM stuff
-            trimdat.write(data_line(str(i), pos, mom, ke)+'\r\n')
+            trimdat.write(data_line(i, pos, mom, ke)+'\r\n')
 
             # Print a hit, and increment hit count
             print "Particle number " + str(i) + " hits."
