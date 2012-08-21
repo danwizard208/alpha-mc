@@ -1,3 +1,9 @@
+compute-parameters.py             # Python script to compute the azimuth angle and height of the counter, based on its radius, and the AV radius and thickness
+alphacounter.geo                  # SymLink to below file
 RATDIR/data/geo/alphacounter.geo  # Geometry file, specifications of event generating region
 generate_events.mac               # Rat macro to generate the events
+alpha.root                        # Root file in which events are stored
+process_events.py                 # Python script to read in alpha.root, and calculate which events have a trajectory lining up with the detector, and generate TRIM.DAT to pass to SRIM
+TRIM.DAT                          # SRIM input file describing initial particle positions, energies, and directions
+TRANSMIT.txt                      # SRIM output file describing final kinetics of all events that pass through the layer of air
 Helium_In_*                       # SRIM generated text files for Stopping and Energy loss of Alpha particles
