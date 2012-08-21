@@ -69,6 +69,8 @@ f = ROOT.TFile(filename)
 Tree = f.Get('T');
 
 with open("TRIM.DAT", 'w') as trimdat:
+    for i in range(10):
+        trimdat.write("First 10 lines commented.\r\n")
     total_hits = 0
     for i in range(Tree.GetEntries()):
         Tree.GetEntry(i)
