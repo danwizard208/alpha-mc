@@ -3,7 +3,7 @@ import sys
 import ROOT
 import io
 
-histo=ROOT.TH1F('transmit', "Transmitted energies", 100, .94E6, 1E6)
+histo=ROOT.TH1F('transmit', "Transmitted energies", 1000, 5E6, 7.7E6)
 with open("TRANSMIT.txt") as transmit:
     for line in transmit:
         lines = line.split()
