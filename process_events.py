@@ -7,7 +7,7 @@ from ROOT import TVector3
 
 AV_radius = 6000 #mm
 AV_inner_radius = 5999 #mm
-counter_radius = 10 #mm
+counter_radius = 25.4 #mm
 counter_height = math.sqrt((AV_inner_radius ** 2) - (counter_radius ** 2)) #mm
 
 def scale(scalar, vector):
