@@ -69,7 +69,9 @@ f = ROOT.TFile(filename)
 Tree = f.Get('T');
 
 with open("TRIM.DAT", 'w') as trimdat:
-    for i in range(10):
+    #TRIM.DAT expects lines to end in '\r\n'
+    #The first 10 lines in TRIM.DAT are automatically treated as comments.
+    for i in range(10): 
         trimdat.write("First 10 lines commented.\r\n")
     total_hits = 0
     for i in range(Tree.GetEntries()):
@@ -78,9 +80,9 @@ with open("TRIM.DAT", 'w') as trimdat:
         rmc = rds.GetMC()
         for j in range(rmc.GetMCParticleCount()):
             rmcparticle = rmc.GetMCParticle(j)
-            pos = rmcparticle.GetPos() #position in mm
-            mom = rmcparticle.GetMom() #momentum in MeV/c
-            ke = rmcparticle.GetKE() #KE in MeV
+            pos = rmcparticle.GetPos() # position in mm
+            mom = rmcparticle.GetMom() # momentum in MeV/c
+            ke = rmcparticle.GetKE() # KE in MeV
             # Scale pos to AV_inner_radius:
             # hack to generate events only on the surface of the acrylic.
             pos = scale(AV_inner_radius / pos.Mag(), pos)
@@ -88,10 +90,10 @@ with open("TRIM.DAT", 'w') as trimdat:
             # (Units are (c * mm)/MeV, dimensions of T/M; irrelevant here)
             t = (counter_height - pos.Z()) / mom.Z() 
             if t < 0: 
-                continue #Negative time means it will never reach counter
+                continue # Negative time means it will never reach counter
             final_pos = pos + (scale(t, mom))
             if (final_pos.X() ** 2 + final_pos.Y() ** 2) > counter_radius ** 2:
-                continue #When it reaches the counter height, it's outside the radius
+                continue # When it reaches the counter height, it's outside the radius
             # Trajectory lines up, now for SRIM stuff
             trimdat.write(data_line(i, pos, mom, ke)+'\r\n')
 
