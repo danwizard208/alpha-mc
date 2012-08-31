@@ -25,8 +25,8 @@ Setting up
 Running the Simulation
 ----------------------
 0.  Start in this repository.
-1.  Run rat on the file "generate\_events.mac" (`# rat generate\_events.mac`)
-2.  Run the script "process\_events.py" (`# ./process\_events.py`)
+1.  Run rat on the file "generate\_events.mac" (`# rat generate_events.mac`)
+2.  Run the script "process\_events.py" (`# ./process_events.py`)
 3.  Copy the file "TRIM.DAT" to the SRIM directory on your windows installation,
     overriding an already existing file if necessary.
 4.  Copy the "TRIM.IN" file corresponding to the material you are using to the
@@ -34,7 +34,7 @@ Running the Simulation
 5.  Run "TRIM.EXE".
 6.  A file TRANSMIT.txt will be generated in SRIM - Outputs - 
     copy this to this repository on your linux installation.
-7.  Run the script "final\_histo.py" (`# ./final\_histo.py`)
+7.  Run the script "final\_histo.py" (`# ./final_histo.py`)
 8.  Marvel at the plot!
 
 Tweaking Parameters
