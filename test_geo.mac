@@ -1,0 +1,18 @@
+/rat/db/set DETECTOR geo_file "geo/alphatest.geo"
+/tracking/storeTrajectory 1
+/run/initialize
+/rat/proc prune
+/rat/procset prune "mc.track:opticalphoton"
+/rat/proc count
+/rat/procset update 10
+/rat/proc outroot
+/rat/procset file "alpha.root"
+
+/generator/add multicombo gun:fill:poisson
+/generator/vtx/set alpha 0 0 0 1.0|av|1
+# /generator/vtx/set e- 0 0 0 1.0|counter|1
+# /generator/vtx/set e+ 0 0 0 1.0|gone|1
+/generator/rate/set 1
+
+/run/beamOn 100
+exit
