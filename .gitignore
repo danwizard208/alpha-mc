@@ -1,4 +1,4 @@
-alpha.pdf
+*.pdf
 alpha.root
-TRIM.DAT
-TRANSMIT.txt
+TRIM.DAT*
+TRANSMIT*.txt
