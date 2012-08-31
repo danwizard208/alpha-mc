@@ -1,15 +1,19 @@
 /rat/db/set DETECTOR geo_file "geo/alphacounter.geo"
+/tracking/storeTrajectory 1
 /run/initialize
+/rat/proc prune
+/rat/procset prune "mc.track:opticalphoton"
 /rat/proc count
 /rat/procset update 10
 /rat/proc outroot
 /rat/procset file "alpha.root"
 
 /generator/add multicombo gun:fill:poisson
-/generator/vtx/set neutron 0 0 0 6.003|counter_region|1
-/generator/vtx/set neutron 0 0 0 7.687|counter_region|1
-/generator/vtx/set neutron 0 0 0 5.305|counter_region|1
+/generator/vtx/set alpha 0 0 0 6.003|counter_region|1
+/generator/vtx/set alpha 0 0 0 7.687|counter_region|1
+/generator/vtx/set alpha 0 0 0 5.305|counter_region|1
+/generator/vtx/set e- 0 0 0 1.0|air_region|1
 /generator/rate/set 1
 
-/run/beamOn 1000
+/rat/run/start 100
 exit
